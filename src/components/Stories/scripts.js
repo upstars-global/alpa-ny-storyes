@@ -11,10 +11,12 @@ import availableLanguages from "/src/components/Stories/localization/available-l
 import en from '@components/Stories/localization/en.json';
 import it from '@components/Stories/localization/it.json';
 import de from '@components/Stories/localization/de.json';
+import fr from '@components/Stories/localization/fr.json';
 import watchAgainIcon from "@components/Stories/img/icons/icon_replay.svg";
 import video_en from '@components/Stories/img/video/en.mp4';
 import video_it from '@components/Stories/img/video/it.mp4';
 import video_de from '@components/Stories/img/video/de.mp4';
+import video_fr from '@components/Stories/img/video/fr.mp4';
 import regular from '@components/Stories/img/statuses/regular_512.webp';
 import bronze from '@components/Stories/img/statuses/bronze_512.webp';
 import silver from '@components/Stories/img/statuses/silver_512.webp';
@@ -135,6 +137,7 @@ export default {
       en,
       it,
       de,
+      fr,
     };
 
     const close = () => {
@@ -717,6 +720,7 @@ export default {
       video_en,
       video_it,
       video_de,
+      video_fr,
       scip_vip_level,
       scip_regular_level,
       scip_top_wining,

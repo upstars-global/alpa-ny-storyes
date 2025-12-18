@@ -47,7 +47,7 @@ https://domain.com/your_story_ny_2025/?language=en&currency=USD&name=Denys&vip_l
 
 | Параметр | Описание | Значения | По умолчанию | Пропуск сегмента |
 |----------|----------|----------|--------------|------------------|
-| `language` | Язык интерфейса | `en`, `de`, `it` | Язык браузера | — |
+| `language` | Язык интерфейса | `en`, `de`, `it`, `fr` | Язык браузера | — |
 | `currency` | Валюта | Любая | `USD` | — |
 | `name` | Имя/ник игрока | Строка | Пусто (без имени) | — |
 | `vip_level` | VIP-уровень | `1`-`6` | Пусто | Если пусто — сегмент пропускается |
@@ -500,6 +500,7 @@ vip_level_start.value = tl.duration();
 - `en` — English
 - `de` — Deutsch
 - `it` — Italiano
+- `fr` — Français
 
 ### Определение языка
 
@@ -512,8 +513,18 @@ vip_level_start.value = tl.duration();
 ```vue
 <source v-if="texts.lang === 'it'" :src="video_it" type="video/mp4">
 <source v-else-if="texts.lang === 'de'" :src="video_de" type="video/mp4">
+<source v-else-if="texts.lang === 'fr'" :src="video_fr" type="video/mp4">
 <source v-else :src="video_en" type="video/mp4">
 ```
+
+### Файлы локализации
+
+| Язык | Файл локализации | Видеофайл |
+|------|------------------|-----------|
+| English | `localization/en.json` | `img/video/en.mp4` |
+| Deutsch | `localization/de.json` | `img/video/de.mp4` |
+| Italiano | `localization/it.json` | `img/video/it.mp4` |
+| Français | `localization/fr.json` | `img/video/fr.mp4` |
 
 ---
 
@@ -625,6 +636,7 @@ const segmentLength = 6;  // ← Шаг навигации в секундах
   - `en.mp4`
   - `de.mp4`
   - `it.mp4`
+  - `fr.mp4`
 
 ### Шаг 2: Синхронизировать Timeline с новым видео
 1. Просмотреть новое видео и записать тайминги ключевых моментов

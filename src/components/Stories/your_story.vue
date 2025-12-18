@@ -15,6 +15,7 @@
       >
       <source v-if="this.texts.lang === 'it'" :src="video_it" type="video/mp4">
       <source v-else-if="this.texts.lang === 'de'" :src="video_de" type="video/mp4">
+      <source v-else-if="this.texts.lang === 'fr'" :src="video_fr" type="video/mp4">
       <source v-else :src="video_en" type="video/mp4">
       </video>
     </div>
