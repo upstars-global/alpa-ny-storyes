@@ -33,7 +33,7 @@
       </div>
       <div id="stories-segment-2" class="stories-segment">
         <div class="h5 max_with_bigger" v-html="this.texts.light_up"></div>
-        <div class="h2">2025!</div>
+        <div class="h2">2026!</div>
       </div>
       <div id="stories-segment-3" v-show="!scip_vip_level" class="stories-segment">
         <img id="player_status"
