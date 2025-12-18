@@ -60,7 +60,7 @@ export default {
     const letterSrc = ref('');
     const texts = ref('en');
     const currency = ref('USD');
-    const promocode = ref('2025');
+    const promocode = ref('ROCKET2026');
     const name = ref('');
     const days = ref(false);
     const regular_level = ref('');

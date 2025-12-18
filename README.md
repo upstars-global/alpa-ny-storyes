@@ -58,7 +58,7 @@ https://domain.com/your_story_ny_2025/?language=en&currency=USD&name=Denys&vip_l
 | `cashback` | Кэшбек | Число | `0` | Если `0` или пусто — пропускается |
 | `bonus` | Бонусы | Число | `0` | Если `< 1` — пропускается |
 | `sport_winings` | Ставки/беттинг выигрыши | Число | `0` | Если `< 30` — пропускается |
-| `promocode` | Промокод | Строка | `2025` | — |
+| `promocode` | Промокод | Строка | `ROCKET2026` | — |
 | `end_link` | Ссылка на кнопку в конце | URL | Пусто | — |
 
 ---
@@ -564,8 +564,8 @@ vip_level_start.value = tl.duration();
 
 | Промокод | Описание в финале |
 |----------|-------------------|
-| `VIP2025` | "125% bonus is waiting for you!" |
-| `2025` (default) | "50% + 50 FS bonus is waiting for you!" |
+| `VIPROCKET2026` | "125% bonus is waiting for you!" |
+| `ROCKET2026` (default) | "50% + 50 FS bonus is waiting for you!" |
 
 ---
 

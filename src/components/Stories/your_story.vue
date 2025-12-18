@@ -135,10 +135,10 @@
 
       
       <div id="stories-segment-16" class="stories-segment margin_top_small no_transform" :style="animationPauseStyle">
-        <div class="waiting_text" v-if="this.promocode === 'VIP2025' " >
+        <div class="waiting_text" v-if="this.promocode === 'VIPROCKET2026' " >
           {{ this.texts.end_text_gift }}
         </div>
-        <div class="waiting_text" v-if="this.promocode === '2025'">
+        <div class="waiting_text" v-if="this.promocode === 'ROCKET2026'">
           {{ this.texts.end_text_gift1 }}
         </div>
         <div class="present_placeholder"></div>
