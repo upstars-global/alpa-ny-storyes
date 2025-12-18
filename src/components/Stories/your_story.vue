@@ -35,40 +35,9 @@
         <div class="h5 max_with_bigger" v-html="this.texts.light_up"></div>
         <div class="h2">2026!</div>
       </div>
-      <div id="stories-segment-3" v-show="!scip_vip_level" class="stories-segment">
-        <img id="player_status"
-             :src="vip_level_src" class="player_status"
-             style="margin-top: 10vh"
-             alt="level"
-        />
-        <div class="h5">
-          {{ this.texts.you_reached }}
-        </div>
-        <div class="h3">
-          <div v-if="this.level === '1'">
-            {{ this.texts.vip_level_1 + this.texts.level }}
-          </div>
-          <div v-else-if="this.level ==='2'">
-            {{ this.texts.vip_level_2 + this.texts.level}}
-          </div>
-          <div v-else-if="this.level === '3'">
-            {{ this.texts.vip_level_3 + this.texts.level }}
-          </div>
-          <div v-else-if="this.level === '4'">
-            {{ this.texts.vip_level_4 + this.texts.level }}
-          </div>
-          <div v-else-if="this.level === '5'">
-            {{ this.texts.vip_level_5 + this.texts.level }}
-          </div>
-          <div v-else-if="this.level === '6'">
-            {{ this.texts.vip_level_6 + this.texts.level }}
-          </div>
-          
-
-        </div>
-        <div v-if="this.level == '1' || this.level == '2' || this.level == '3' || this.level == '4' || this.level == '5' || this.level == '6'" class="h5">
-          {{ this.texts.in_vip }}
-        </div>
+      <div id="stories-segment-3" class="stories-segment">
+        <div class="h5 max_with_bigger" v-html="this.texts.light_up_moments"></div>
+        <div class="h2">2025!</div>
       </div>
       <div id="stories-segment-4" v-show="!scip_regular_level" class="stories-segment" :style="animationPauseStyle">
         <img id="player_status"

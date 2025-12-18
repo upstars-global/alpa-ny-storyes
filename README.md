@@ -72,7 +72,7 @@ Stories состоит из последовательных сегментов,
 | 0 | `stories-segment-0` | Подсказка "Нажми play" | До начала воспроизведения |
 | 1 | `stories-segment-1` | "Dear cosmic explorer" + имя | Всегда |
 | 2 | `stories-segment-2` | "Your journey is about to reach 2026!" | Всегда |
-| 3 | `stories-segment-3` | VIP-уровень | Если `vip_level` задан (1-6) |
+| 3 | `stories-segment-3` | "Light up your epic moments of 2025!" | Всегда |
 | 4 | `stories-segment-4` | Regular-уровень | Если `regular_level` задан (1-12) |
 | 5 | `stories-segment-5` | Топ выигрыш | Если `top_winnings >= 50` |
 | 6 | `stories-segment-6` | Любимая игра | Если `favorite_game_name` задан |
@@ -98,7 +98,7 @@ Stories состоит из последовательных сегментов,
 | **segment-0** | 0.0 сек | мгновенно | — | Нет | — |
 | **segment-1** | 0.0 сек | 22.0 сек | 22.0 сек | Нет | — |
 | **segment-2** | 22.0 сек | 28.5 сек | 6.5 сек | Нет | `light_up_start` |
-| **segment-3** | 28.5 сек | 34.5 сек | 6.0 сек | **Да** | `vip_level_start`, `vip_level_end` |
+| **segment-3** | 28.5 сек | 34.5 сек | 6.0 сек | Нет | `intro_moments_start`, `intro_moments_end` |
 | **segment-4** | 34.5 сек | 39.8 сек | 5.3 сек | **Да** | `regular_level_start`, `regular_level_end` |
 | **segment-5** | 39.8 сек | 45.1 сек | 5.3 сек | **Да** | `top_wining_start`, `top_wining_end` |
 | **segment-6** | 45.1 сек | 50.9 сек | 5.8 сек | **Да** | `faw_game_start`, `faw_game_end` |
@@ -121,7 +121,7 @@ Stories состоит из последовательных сегментов,
 [=== segment-0: подсказка (скрыта при старте) ===]
 [============== segment-1: Приветствие (0-22) ==============]
                       [== seg-2: 2026! (22-28.5) ==]
-                              [= seg-3: VIP (28.5-34.5) =]     ← ПРОПУСКАЕМЫЙ
+                              [= seg-3: Light up 2025 (28.5-34.5) =]
                                       [= seg-4: Regular (34.5-39.8) =] ← ПРОПУСКАЕМЫЙ
                                               [= seg-5: Top Win (39.8-45.1) =] ← ПРОПУСКАЕМЫЙ
                                                       [= seg-6: Game (45.1-50.9) =] ← ПРОПУСКАЕМЫЙ
@@ -159,15 +159,17 @@ tl.to("#stories-segment-2", {delay: 3.5, duration: 1, marginTop: "-22vh", scale:
 // Итого: 0.5 + 1.5 + 3.5 + 1 = 6.5 сек → конец: 28.5 сек
 ```
 
-#### Segment 3 — VIP Level (28.5 - 34.5 сек) ⚡ ПРОПУСКАЕМЫЙ
+#### Segment 3 — Intro Moments 2025 (28.5 - 34.5 сек)
 ```javascript
-vip_level_start.value = tl.duration(); // = 28.5 сек
-// Появление: delay 0.5 + duration 1 = 1.5 сек
-tl.from("#stories-segment-3", {delay: 0.5, duration: 1, marginTop: "-18vh", scale: 0.5, opacity: 0});
-// Показ + исчезновение: delay 3.5 + duration 1 = 4.5 сек
-tl.to("#stories-segment-3", {delay: 3.5, duration: 1, marginTop: "-18vh", scale: 0.5, opacity: 0});
-vip_level_end.value = tl.duration(); // = 34.5 сек
-// Длительность: 6 сек
+intro_moments_start.value = tl.duration(); // = 28.5 сек
+// Анимация как у segment-2: fromTo с опусканием текста вниз
+tl.fromTo("#stories-segment-3", 
+  {delay: 0.5, duration: 1.5, marginTop: "-22vh", scale: 0.5, opacity: 0},
+  {duration: 1.5, marginTop: "30vh", scale: 1, opacity: 1});
+// Исчезновение: delay 3.5 + duration 1 = 4.5 сек
+tl.to("#stories-segment-3", {delay: 3.5, duration: 1, marginTop: "-22vh", scale: 0.5, opacity: 0});
+intro_moments_end.value = tl.duration(); // = 34.5 сек
+// Текст: "Now, let us light up your most epic moments of 2025!"
 ```
 
 #### Segment 4 — Regular Level (34.5 - 39.8 сек) ⚡ ПРОПУСКАЕМЫЙ
@@ -305,16 +307,17 @@ const skips = () => {
 | Сценарий | Пропущено сегментов | Длительность |
 |----------|---------------------|--------------|
 | **Максимум** (все данные заполнены) | 0 | ~93 сек |
-| **Минимум** (только обязательные) | 7 | ~52.8 сек |
+| **Минимум** (только обязательные) | 6 | ~58.8 сек |
 
-**Пропускаемые сегменты** (общая длительность ~40.2 сек):
-- VIP Level: 6.0 сек
+**Пропускаемые сегменты** (общая длительность ~34.2 сек):
 - Regular Level: 5.3 сек
 - Top Winnings: 5.3 сек
 - Favorite Game: 5.8 сек
 - Cashback: 5.8 сек
 - Bonuses: 5.8 сек
 - Sport Winnings: 5.8 сек
+
+> **Примечание**: Segment-3 ("Light up moments 2025") теперь НЕ пропускаемый
 
 ---
 
@@ -349,7 +352,7 @@ watch(isPlaying, (newIsPlaying) => {
 Для каждого опционального сегмента хранятся временные метки начала и конца:
 
 ```javascript
-vip_level_start, vip_level_end         // Сегмент VIP-уровня
+intro_moments_start, intro_moments_end // Сегмент intro moments (часть вступления)
 regular_level_start, regular_level_end // Сегмент Regular-уровня
 top_wining_start, top_wining_end       // Сегмент топ выигрыша
 faw_game_start, faw_game_end           // Сегмент любимой игры

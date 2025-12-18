@@ -77,8 +77,8 @@ export default {
     const regular_level_src = ref('');
     const sport_winings = ref('');
     const light_up_start = ref(9999);
-    const vip_level_start = ref(9999);
-    const vip_level_end = ref(9999);
+    const intro_moments_start = ref(9999);
+    const intro_moments_end = ref(9999);
     const regular_level_start = ref(9999);
     const regular_level_end = ref(9999);
     const faw_game_start = ref(9999);
@@ -168,10 +168,7 @@ export default {
     }
 
     const skips = () => {
-      if (scip_vip_level.value === true && currentTime.value > vip_level_start.value && currentTime.value < vip_level_end.value) {
-        videoPlayer.value.currentTime = vip_level_end.value;
-        tl.time(vip_level_end.value);
-      }
+      // segment-3 теперь не пропускаемый (light_up_moments)
       if (scip_regular_level.value === true && currentTime.value > regular_level_start.value && currentTime.value < regular_level_end.value) {
         videoPlayer.value.currentTime = regular_level_end.value;
         tl.time(regular_level_end.value);
@@ -238,11 +235,9 @@ export default {
           newTime = regular_level_start.value;
         }
         if (scip_regular_level.value === true && newTime >= regular_level_start.value && newTime < regular_level_end.value) {
-          newTime = vip_level_start.value;
+          newTime = intro_moments_start.value;
         }
-        if (scip_vip_level.value === true && newTime >= vip_level_start.value && newTime < vip_level_end.value) {
-          newTime = light_up_start.value;
-        }
+        // segment-3 (vip_level) теперь не пропускаемый
         if (newTime < 0) {
           newTime = 0;
         }
@@ -591,14 +586,15 @@ export default {
       tl.to("#stories-segment-2", 
             {delay: 3.5, duration: 1, marginTop: "-22vh", scale:0.5, opacity:0, ease: "power1.Out"});
 
-      // vip level
-      vip_level_start.value = tl.duration();
+      // intro moments (light up 2025)
+      intro_moments_start.value = tl.duration();
 
-      tl.from("#stories-segment-3", 
-            {delay: 0.5, duration: 1, marginTop: "-18vh", scale:0.5, opacity:0, ease: "power1.Out"});
+      tl.fromTo("#stories-segment-3", 
+        {delay: 0.5, duration: 1.5, marginTop: "-22vh", scale:0.5, opacity:0, ease: "power1.Out"},
+        {duration: 1.5, marginTop: "30vh", scale:1, opacity:1, ease: "power1.Out"});
       tl.to("#stories-segment-3", 
-            {delay: 3.5, duration: 1, marginTop: "-18vh", scale:0.5, opacity:0, ease: "power1.Out"});
-      vip_level_end.value = tl.duration();
+            {delay: 3.5, duration: 1, marginTop: "-22vh", scale:0.5, opacity:0, ease: "power1.Out"});
+      intro_moments_end.value = tl.duration();
 
       // regular level
       regular_level_start.value = tl.duration();
