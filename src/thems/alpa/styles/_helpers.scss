@@ -1,0 +1,48 @@
+// text align
+.text--align-center {
+    text-align: center;
+}
+
+// text transform
+.text--upper {
+    text-transform: uppercase;
+}
+
+.text--lowercase {
+    text-transform: lowercase;
+}
+
+.text--initial {
+    text-transform: initial;
+}
+
+// colors
+
+.text-color--menu-active {
+    color: var(--color-text-menu-active);
+}
+
+.text-color--body {
+    color: var(--color-text-body);
+}
+
+.text--color--alt {
+    color: var(--color-text-alt);
+}
+
+.color-primary {
+    color: var(--color-primary-1);
+}
+
+.color-text-body {
+    color: var(--color-text-body)
+}
+
+.color-additional-gradient--silver {
+    background: #FEFEFE;
+    background: linear-gradient(to top, #101A22 0%, #FEFEFE 40%, #FEFEFE 60%, #101A22 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+

@@ -1,0 +1,24 @@
+{
+  "name": "Rocketplay Casino",
+  "short_name": "Rocketplay Casino",
+  "description": "Australian online casino Rocketplay for you. Play for real money. Trusted AU-casino",
+  "theme_color": "#000A12",
+  "background_color": "#000A12",
+  "icons": [
+    {
+      "src": "/dist/icon_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/dist/icon_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "scope": "/",
+  "start_url": "/?mode=standalone",
+  "display": "standalone",
+  "gcm_sender_id": "330561634409",
+  "gcm_user_visible_only": true
+}

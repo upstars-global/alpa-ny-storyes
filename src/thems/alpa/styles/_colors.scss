@@ -1,0 +1,68 @@
+// Component colors
+$header--background: var(--color-layer-alt-1);
+
+@mixin link--light($img) {
+    color: var(--color-primary-1);
+
+    &.active {
+        color: var(--color-primary-1);
+    }
+
+    @include media(L) {
+        &:hover {
+            color: var(--color-primary-1);
+        }
+    }
+}
+
+@mixin link--dark($img) {
+    color: var(--color-text-alt);
+
+    &.active {
+        color: var(--color-primary-1);
+    }
+
+    @include media(L) {
+        &:hover {
+            color: var(--color-primary-1);
+        }
+    }
+
+    @if ($img == true) {
+        &.active {
+            & img {
+                filter: none;
+            }
+
+            & path {
+                fill: var(--color-primary-1);
+            }
+        }
+
+        @include media(L) {
+            &:hover {
+                & img {
+                    filter: none;
+                }
+
+                & path {
+                    fill: var(--color-primary-1);
+                }
+            }
+        }
+
+        & img {
+            filter: brightness(0) invert(1);
+        }
+    }
+}
+
+@mixin link($theme, $img: false) {
+    cursor: pointer;
+
+    @if ($theme == 'light') {
+        @include link--light($img);
+    } @else {
+        @include link--dark($img);
+    }
+}

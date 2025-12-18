@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width: 100%;height: 100%;">
+    <linearGradient id="bg-animation">
+        <stop offset="-1" stop-color="#262a34" stop-opacity="0"/>
+        <stop offset="-1" stop-color="#262a34" stop-opacity="0.5">
+            <animate attributeName="offset" dur="1.5s" values="-1.5;1.5" repeatCount="indefinite"/>
+            <animate attributeName="stop-color" values="#313A50; #313A50; #313A50;" dur="1.5s"
+                     repeatCount="indefinite"></animate>
+            <animate attributeName="stop-opacity" values="0; 0; .7; 0;" dur="1.5s"
+                     repeatCount="indefinite"></animate>
+        </stop>
+        <stop offset="2" stop-color="#262a34" stop-opacity="0"/>
+    </linearGradient>
+    <rect width="100%" height="100%" fill="url('#bg-animation')"/>
+    <svg x="50%" y="50%" xmlns="http://www.w3.org/2000/svg" opacity="0.5" style="overflow: visible">
+        <g fill="#fff" transform="translate(-18 -18)">
+            <path d="M20.5 33h-5a1.5 1.5 0 0 0 0 3h5a1.5 1.5 0 0 0 0-3Z"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M21.383 17.342c.952.655 2.756 2.603-.027 6.979 0 0-1.337-.631-2.138-2.439A8.562 8.562 0 0 1 18.01 23l-.01-.008a9.903 9.903 0 0 1-1.172-1.175c-.797 1.858-2.167 2.504-2.167 2.504-2.775-4.366-.987-6.315-.033-6.974a2.99 2.99 0 0 1 .378-.225 8.678 8.678 0 0 1 .009-.817C15.242 12.37 18.01 9 18.01 9s2.636 3.464 2.958 7.321c.022.263.033.528.032.795.086.042.223.116.383.226Zm4.003-3.198A8.96 8.96 0 0 0 27 9a9 9 0 0 0-9-9 9 9 0 0 0-9 9 8.96 8.96 0 0 0 1.614 5.144A9 9 0 0 0 0 23a9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-10.614-8.856Z"/>
+        </g>
+    </svg>
+</svg>

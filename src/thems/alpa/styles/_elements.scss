@@ -1,0 +1,39 @@
+ol, ul {
+    &.list-number {
+        padding: 0;
+        list-style: none;
+        counter-reset: my-awesome-counter;
+        color: var(--color-text-body);
+
+        li {
+            counter-increment: my-awesome-counter;
+            display: flex;
+            margin-bottom: .5rem;
+            white-space: normal;
+
+            strong {
+                color: var(--color-text-alt);
+            }
+
+            &::before {
+                content: counter(my-awesome-counter);
+                @include font-size--Caption2($font-weight--normal);
+                display: block;
+                width: 1.5rem;
+                height: 1.5rem;
+                line-height: 1.5rem;
+                background: var(--color-layer-alt-4);
+                text-align: center;
+                border-radius: 1.5rem;
+                margin-right: .5rem;
+                flex-shrink: 0;
+
+                @include media(XS) {
+                    line-height: 1.5rem;
+                }
+            }
+        }
+
+    }
+
+}

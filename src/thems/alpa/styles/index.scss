@@ -1,0 +1,17 @@
+@import "~@theme/styles/_colors";
+@import "~@theme/styles/_fonts";
+@import "~@theme/styles/_const";
+@import "button";
+@import "input";
+@import "pin";
+@import "mixins";
+@import "helpers";
+@import "elements";
+
+$container--border-radius: var(--border-radius-s);
+$container--border-radius-small: 10px;
+$container--border-radius-light: 2px;
+$extra--letter-spacing: 0.06rem;
+$container-max-width: 40rem;
+
+$header--height: 4rem;

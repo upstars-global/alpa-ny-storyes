@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="90px" viewBox="0 0 80 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1402.40056,141.400562 C1402.40056,132.908699 1395.49186,126 1387,126 C1378.50814,126 1371.59944,132.908699 1371.59944,141.400562 L1371.59944,147.836533 C1369.95257,148.398548 1368.40995,149.044805 1367,149.769593 L1367,173.503814 C1372.24348,176.199165 1379.27083,177.850521 1387,177.850521 C1394.72917,177.850521 1401.75652,176.199165 1407,173.503814 L1407,149.769593 C1405.59005,149.044811 1404.04743,148.398555 1402.40056,147.836533 L1402.40056,141.400562 Z M1390.07111,162.177833 L1390.07111,167.021624 C1390.07111,168.717721 1388.69614,170.092738 1387,170.092738 C1385.30386,170.092738 1383.92889,168.717721 1383.92889,167.021624 L1383.92889,162.177833 C1382.74191,161.258655 1381.97457,159.82359 1381.97457,158.206096 C1381.97457,155.430631 1384.22454,153.180663 1387,153.180663 C1389.77546,153.180663 1392.02543,155.430631 1392.02543,158.206096 C1392.02543,159.823596 1391.25809,161.258655 1390.07111,162.177833 Z M1395.88988,146.184903 C1393.08501,145.692624 1390.1006,145.422848 1387,145.422848 C1383.8994,145.422848 1380.91499,145.692631 1378.11012,146.184903 L1378.11012,141.400562 C1378.11012,136.498793 1382.09823,132.510682 1387,132.510682 C1391.90177,132.510682 1395.88988,136.498793 1395.88988,141.400562 L1395.88988,146.184903 Z" id="path-1"></path>
+        <filter x="-75.0%" y="-57.9%" width="250.0%" height="215.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="profile_2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="profile_settings" transform="translate(-1347.000000, -107.000000)" fill-rule="nonzero">
+            <g id="Shape">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#ffffff" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

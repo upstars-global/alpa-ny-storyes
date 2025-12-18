@@ -1,0 +1,168 @@
+//Themes font weight
+$font-weight--normal: 400;
+$font-weight--bold: 700;
+$font-weight--black: 900;
+
+$font-family--main: 'Rubik', system-ui, sans-serif;
+$font-family--secondary: 'Roboto Slab', 'Rubik', sans-serif;
+
+@mixin font-size--LargeTitle {
+  font-size: 2rem;
+  line-height: 110%;
+  font-weight: $font-weight--black;
+  letter-spacing: 0.01em;
+
+  @include media(M) {
+      font-size: 3rem;
+  }
+}
+
+@mixin font-size--Header1($weight: $font-weight--bold) {
+  font-size: 1.5rem;
+  line-height: 125%;
+  text-transform: uppercase;
+  font-weight: $weight;
+  letter-spacing: 0;
+
+  @include media(M) {
+    font-size: 2rem;
+    line-height: 125%;
+  }
+}
+
+@mixin font-size--Header2($weight: $font-weight--bold) {
+  font-size: 1.25rem;
+  line-height: normal;
+  text-transform: uppercase;
+  font-weight: $weight;
+  letter-spacing: 0;
+
+  @include media(M) {
+      font-size: 1.5rem;
+      line-height: normal;
+  }
+}
+
+@mixin font-size--Header3 {
+  font-size: 1.25rem;
+  line-height: normal;
+  font-weight: $font-weight--bold;
+
+  @include media(XS) {
+      font-size: 1.25rem;
+      line-height: normal;
+  }
+}
+
+@mixin font-size--Body($weight: $font-weight--normal) {
+  font-size: 1rem;
+  line-height: normal;
+  font-weight: $weight;
+
+  @include media(XS) {
+      font-size: 1rem;
+      line-height: 150%;
+  }
+}
+
+@mixin font-size--Caption1($weight: $font-weight--bold) {
+  font-size: 0.875rem;
+  line-height: 170%;
+  text-transform: uppercase;
+  font-weight: $weight;
+
+  @include media(XS) {
+      font-size: 0.875rem;
+      line-height: 170%;
+  }
+}
+
+@mixin font-size--Caption2($weight: $font-weight--bold) {
+  font-size: 0.75rem;
+  line-height: 140%;
+  font-weight: $weight;
+
+  @include media(XS) {
+      font-size: 0.75rem;
+      line-height: 140%;
+  }
+}
+
+@mixin font-size--SmallCaption($weight: $font-weight--normal) {
+  font-size: 0.5625rem;
+  line-height: normal;
+  text-transform: uppercase;
+  font-weight: $weight;
+  letter-spacing: 0.06em;
+
+  @include media(XS) {
+      font-size: 0.5625rem;
+      line-height: 180%;
+  }
+}
+
+@mixin font-size--ButtonStyleMedium {
+    font-family: $font-family--secondary;
+    font-size: 1.25rem;
+    line-height: 150%;
+    text-transform: uppercase;
+    font-weight: $font-weight--normal;
+    letter-spacing: 0.06em;
+
+    @include media(XS) {
+        font-size: 1.25rem;
+        line-height: 150%;
+    }
+}
+
+@mixin font-size--ButtonStyleSmall {
+    font-family: $font-family--secondary;
+    font-size: 0.875rem;
+    line-height: 170%;
+    text-transform: uppercase;
+    font-weight: $font-weight--black;
+    letter-spacing: 0.06em;
+
+    @include media(XS) {
+        font-size: 0.875rem;
+        line-height: 170%;
+    }
+}
+
+@mixin font-size--ButtonStyleXS {
+  font-family: $font-family--secondary;
+  font-size: 0.75rem;
+  line-height: 135%;
+  text-transform: uppercase;
+  font-weight: $font-weight--black;
+  letter-spacing: 0.06em;
+
+  @include media(XS) {
+      font-size: 0.75rem;
+      line-height: 135%;
+  }
+}
+
+@mixin font-link-Small($weight: $font-weight--bold) {
+    font-size: .75rem;
+    line-height: 140%;
+    font-weight: $weight;
+    color: var(--color-text-link-default);
+    text-decoration: underline;
+}
+
+@mixin font-link-Medium($weight: $font-weight--bold) {
+    font-size: 1rem;
+    line-height: 150%;
+    font-weight: $weight;
+    color: var(--color-text-link-default);
+    text-decoration: underline;
+}
+
+@mixin font-link-Large($weight: $font-weight--bold) {
+    font-size: 1.25rem;
+    line-height: normal;
+    font-weight: $weight;
+    color: var(--color-text-link-default);
+    text-decoration: underline;
+}

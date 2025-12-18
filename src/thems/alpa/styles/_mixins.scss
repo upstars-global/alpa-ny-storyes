@@ -1,0 +1,408 @@
+@import "colors";
+
+@mixin font-size--h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+    font-weight: $font-weight--bold;
+    letter-spacing: 0.06rem;
+
+    @include media(M) {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+@mixin font-size--h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+    font-weight: $font-weight--bold;
+    letter-spacing: 0.06rem;
+
+    @include media(M) {
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+}
+
+@mixin font-size--h3 {
+    font-size: 1.17rem;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    font-weight: $font-weight--bold;
+
+    @include media(XS) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+@mixin font-size--h4 {
+    font-size: 1.17rem;
+    line-height: 1.5rem;
+    font-weight: $font-weight--bold;
+    letter-spacing: 0.06rem;
+}
+
+@mixin font-size--main {
+    font-size: 1.17rem;
+    line-height: 1.5rem;
+    font-weight: $font-weight--normal;
+}
+
+@mixin font-size--extra-small {
+    font-size: 1rem;
+    line-height: 135%;
+    font-weight: 900;
+}
+
+@mixin font-size--small {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+// --Font color--
+@mixin font-color--white {
+    color: var(--color-text-alt);
+}
+
+@mixin font-color--gray {
+    color: var(--color-text-body);
+}
+
+@mixin font-color--black {
+    color: var(--color-layer-alt-1);
+}
+
+@mixin font-color--blue {
+    color: var(--color-layer-alt-1);
+}
+
+@mixin font-color--primary {
+    color: var(--color-primary-1);
+}
+
+@mixin font-color--secondary {
+    color: var(--color-primary-1);
+}
+
+@mixin font-color--success {
+    color: var(--color-successfully);
+}
+
+@mixin font-color--alert {
+    color: var(--color-warning);
+}
+
+@mixin font-color--danger {
+    color: var(--color-error);
+}
+
+@mixin font-color--disabled {
+    //pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+//Font-
+@mixin font-family--secondary {
+    font-family: $font-family--secondary;
+}
+
+// --Background--
+@mixin background-black {
+    background-color: var(--color-layer-alt-1);
+}
+
+@mixin background-dark {
+    background-color: var(--color-layer-alt-1);
+}
+
+@mixin background-secondary-dark {
+    background-color: var(--color-layer-alt-2);
+}
+
+@mixin background-white {
+    background-color: var(--color-text-alt);
+}
+
+@mixin background-primary {
+    color: var(--color-button-text-primary);
+    background: var(--color-primary-gradient);
+}
+
+@mixin background-secondary {
+    background-color: var(--color-primary-1);
+}
+
+@mixin background-success {
+    background-color: var(--color-successfully);
+}
+
+@mixin background-alert {
+    background-color: var(--color-warning);
+}
+
+@mixin background-danger {
+    background-color: var(--color-error);
+}
+
+@mixin background-disabled {
+    background-color: var(--color-text-body);
+}
+
+@mixin background-light-blue {
+    background-color: var(--color-layer-alt-2);
+}
+
+@mixin background-warning {
+    background-color: var(--color-primary-2);
+}
+
+@mixin background-attention {
+    background: var(--color-secondary-3);
+}
+
+@mixin background-tertiary {
+    background: var(--color-tertiary-5);
+}
+
+// --Shadow--
+
+/**
+ * Small size shadow
+ *
+ * @private
+ */
+$shadow-small: (
+        x: 0,
+        y: 4px,
+        blur: 4px,
+        spread: 0,
+        colorOpacity: 0.5,
+);
+
+/**
+ * Regular size shadow
+ *
+ * @private
+ */
+$shadow-normal: (
+        x: 0,
+        y: 4px,
+        blur: 8px,
+        spread: 0,
+        colorOpacity: 0.25,
+);
+
+/**
+ * Medium size shadow
+ *
+ * @private
+ */
+$shadow-medium: (
+        x: 0,
+        y: 12px,
+        blur: 24px,
+        spread: 0,
+        colorOpacity: 0.25,
+);
+
+/**
+ * Input size shadow
+ *
+ * @private
+ */
+$shadow-input: (
+        x: 0,
+        y: 2px,
+        blur: 8px,
+        spread: 0,
+        colorOpacity: 0.2,
+);
+
+/**
+ * List of shadows by sizes
+ *
+ * @private
+ */
+$shadow-list: (
+        "small": $shadow-small,
+        "normal": $shadow-normal,
+        "medium": $shadow-medium,
+        "input": $shadow-input,
+);
+
+/**
+ * Create shadow value for box and text shadow property
+ *
+ * @private
+ * @property {string} $size
+ * @property {string} $color
+ * @property {string} $type ["box"]
+ */
+@function getShadow($size, $color, $type: "box") {
+    $shadow: map_get($shadow-list, $size);
+    $x: map_get($shadow, "x");
+    $y: map_get($shadow, "y");
+    $blur: map_get($shadow, "blur");
+    $spread: map_get($shadow, "spread");
+    $colorOpacity: map_get($shadow, "colorOpacity");
+
+    @if ($type == "box") {
+        @return $x $y $blur $spread rgba($color, $colorOpacity);
+    }
+    @if ($type == "text") {
+        @return $x $y $blur rgba($color, $colorOpacity);
+    }
+}
+
+
+/**
+ * Create box-shadow by size and color data
+ *
+ * @private
+ * @property {string} $size
+ * @property {string} $color
+ */
+@mixin shadow($size, $color) {
+    box-shadow: getShadow($size, $color);
+}
+
+/**
+ * Create text-shadow by size and color data
+ *
+ * @private
+ * @property {string} $size
+ * @property {string} $color
+ */
+@mixin textShadow($size, $color) {
+    text-shadow: getShadow($size, $color, "text");
+}
+
+// --Transition--
+@function transition--box-shadow() {
+    @return box-shadow 150ms ease-in-out;
+}
+
+@function transition--color() {
+    @return color 150ms ease-in-out;
+}
+
+@function transition--background-color() {
+    @return background-color 150ms ease-in-out;
+}
+
+@function transition--border-color() {
+    @return border-color 150ms ease-in-out;
+}
+
+@function transition--transform() {
+    @return transform 150ms ease-in-out;
+}
+
+@function transition--opacity() {
+    @return opacity 150ms ease-in-out;
+}
+
+@function transition--filter() {
+    @return filter 150ms ease-in-out;
+}
+
+@mixin transition($transitions...) {
+    transition: $transitions;
+}
+
+
+// Usage:   @include transition-multiple(width height, 0.3s, ease-in-out);
+// Output:  transition(width 0.3s ease-in-out, height 0.3s ease-in-out);
+//
+@mixin multiple-transition($properties: all, $duration: 200ms, $method: ease, $delay: 0ms) {
+    $value: ();
+    @each $property in $properties {
+        @if length($value) > 0 {
+            $value: append($value, unquote(",") #{$property} $duration $method $delay);
+        } @else {
+            $value: append($value, #{$property} $duration $method $delay);
+        }
+    }
+
+    transition: $value;
+}
+
+@mixin scrollbar--secondary {
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--color-primary-1);
+        border: 5px solid var(--color-text-alt);
+    }
+}
+
+@mixin fe-card--border {
+    border: 1px solid var(--color-text-body);
+}
+
+@mixin red-dot {
+    &:before {
+        content: " ";
+        background-color: var(--color-error);
+        border: 1px solid var(--color-error);
+        width: .5rem;
+        height: .5rem;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+    }
+}
+
+@mixin menu-hover {
+    position: relative;
+    color: var(--color-text-body);
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primary-1);
+        transform: scale(0, 1);
+        transform-origin: center;
+        transition: transform .2s ease;
+    }
+
+    &.active {
+        opacity: 1;
+    }
+
+    &.active:after {
+        transform: scale(1, 1);
+    }
+
+    @include media(M) {
+        &:hover {
+            opacity: 1;
+        }
+
+        &:hover:after {
+            transform: scale(1, 1);
+        }
+    }
+}
+
+@mixin link-secondary($weight: $font-weight--normal) {
+    color: var(--color-primary-1);
+    @include font-size--Body($weight);
+    text-decoration: underline;
+}
+
+
+@mixin blur-bg {
+    backdrop-filter: blur(10px);
+}

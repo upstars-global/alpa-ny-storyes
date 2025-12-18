@@ -1,0 +1,170 @@
+@import "colors";
+
+@mixin input {
+    @include font-size--Body;
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-basis: 230px;
+    justify-content: left;
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    outline: none;
+
+    & textarea,
+    & input {
+        @include font-size--Body;
+
+        transition: padding 0.3s ease;
+        background: var(--color-layer-alt-3);
+        border: 2px solid var( --color-layer-alt-4);
+        color: var(--color-text-alt);
+        border-radius: var(--border-radius-m);
+        margin: 0;
+        padding: 0 1rem;
+        outline: none;
+        text-align: left;
+        width: 100%;
+        height: 100%;
+        min-height: 3rem;
+        box-sizing: border-box;
+
+        @include placeholder {
+            color: var(--color-text-body);
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active  {
+            -webkit-box-shadow: 0 0 0 30px var(--color-layer-alt-3) inset !important;
+            -webkit-text-fill-color: var(--color-text-alt);
+            background-color: var(--color-layer-alt-3) !important;
+            background-clip: content-box !important;
+        }
+
+        &::-internal-input-suggested {
+            @include font-size--Body;
+        }
+
+        &:autofill {
+            background-color: var(--color-layer-alt-3);
+            background-image: none;
+            color: var(--color-text-alt);
+        }
+
+        &[type=number]::-webkit-inner-spin-button,
+        &[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        &::-webkit-credentials-auto-fill-button {
+            visibility: hidden;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+        }
+
+        &:focus {
+            border-color: var(--color-primary-1);
+        }
+    }
+
+    & textarea{
+        font-family: inherit;
+        padding: 1rem 1.5rem;
+    }
+}
+
+@mixin input-opposite {
+    @include input;
+    color: var(--color-text-alt);
+    border-color: transparent;
+}
+
+@mixin input-error {
+    //border-color: var(--color-primary-1);
+}
+
+
+@mixin  select-data {
+    position: relative;
+
+    &-field {
+        @include font-size--Caption1;
+        width: 100%;
+        display: inline-block;
+        border-radius: 4rem;
+        background-color: var(--color-tertiary-3);
+        box-sizing: border-box;
+        position: relative;
+        padding: 0 2rem 0 1.5rem;
+        color: var(--color-primary-2);
+        border: none;
+        min-height: 2rem;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+
+        option{
+            color: var(--color-text-body);
+            padding: initial;
+            width: initial;
+            background: var(--color-layer-alt-3);
+        }
+
+        &.disabled {
+            @include font-color--disabled;
+        }
+
+        &.placeholder{
+            color: var(--color-text-body);
+        }
+
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        right: 1rem;
+        top: calc(50% - 3px);
+        border-bottom: 2px solid var(--color-primary-2);
+        border-right: 2px solid var(--color-primary-2);
+        height: .5rem;
+        width: .5rem;
+        -webkit-transform: translateY(-50%) rotate(45deg);
+        transform: translateY(-50%) rotate(45deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+    }
+}
+
+
+@mixin label {
+    @include font-size--Caption2;
+    display: inline-block;
+    margin-bottom: .25rem;
+    padding: 0 1rem;
+    color: var(--color-text-body)
+}
+
+@mixin label-secondary {
+    @include font-size--Caption2($font-weight--normal);
+    color: var(--color-text-body);
+}
+
+@mixin errorMessage ($position: absolute){
+    position: $position;
+    top: 100%;
+    width: 100%;
+    padding-left: 2rem;
+    color: var(--color-error);
+    @include font-size--Caption2($font-weight--normal);
+}

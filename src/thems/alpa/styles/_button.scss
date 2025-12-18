@@ -1,0 +1,253 @@
+@import "colors";
+@import "mixins";
+
+@mixin btn {
+    display: flex;
+    font-size: 1rem;
+    @include font-family--secondary;
+    font-weight: $font-weight--bold;
+    line-height: normal;
+    outline: none;
+    padding: 10px 2rem 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3rem;
+    color: var(--color-text-alt);
+    border: 0;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
+@mixin btn--big {
+    @include font-size--h3;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+}
+
+@mixin btn-disabled {
+    &[disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+@mixin btn-primary {
+    @include btn;
+    @include btn-disabled;
+    color: var(--color-layer-alt-1);
+    background: var(--color-primary-gradient);
+
+    &:hover {
+        background: var(--color-primary-3);
+        opacity: 0.5;
+    }
+
+    &:active {
+        background: var(--color-primary-3);
+        opacity: 0.4;
+    }
+
+}
+
+
+@mixin btn-default {
+    @include btn-primary;
+}
+
+@mixin btn-promo {
+    @include btn-default;
+    padding: 15px 25px;
+}
+
+@mixin btn-ghost {
+    @include btn;
+    @include btn-disabled;
+    color: var(--color-text-alt);
+    background-color: var(--color-text-body);
+
+    &:hover {
+        background-color: var(--color-text-body);
+    }
+
+    &:active {
+        background-color: var(--color-text-body);
+    }
+}
+
+@mixin btn-ghost-opposite {
+    @include btn-ghost;
+    border-color: var(--color-secondary-5);
+    color: var(--color-successfully);
+
+    &:hover {
+        border-color: var(--color-secondary-5);
+    }
+
+    &:active {
+        border-color: var(--color-secondary-5);
+        color: var(--color-secondary-5);
+    }
+}
+
+
+@mixin btn-link {
+    @include btn;
+    text-transform: initial;
+    background: transparent;
+    font-size: 1.17rem;
+    color: var(--color-primary-1);
+
+    &:hover {
+        color: var(--color-primary-3);
+    }
+
+    &:active {
+        color: var(--color-primary-5);
+    }
+}
+
+@mixin btn-link-opposite {
+    @include btn-link;
+    color: var(--color-text-alt);
+
+    &:hover {
+        text-decoration: underline;
+        color: var(--color-text-alt);
+    }
+
+    &:active {
+        color: var(--color-text-alt);
+    }
+}
+
+@mixin btn-popup {
+    cursor: pointer;
+    width: 2rem;
+    opacity: .5;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    &:hover path,
+    &:hover g {
+        fill: var(--color-primary-1);
+        opacity: 1;
+    }
+}
+
+@mixin arrow-icon {
+    &:after,
+    &:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 2px;
+    }
+
+    &:after {
+        bottom: 20px;
+        left: 18px;
+    }
+
+    &:before {
+        top: 20px;
+        left: 18px;
+    }
+}
+
+@mixin arrow-icon-new {
+    &:after,
+    &:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        background: var(--color-text-alt);
+    }
+
+    &:after {
+        bottom: 12px;
+        left: 16px;
+        transform: rotate(-45deg);
+    }
+
+    &:before {
+        top: 12px;
+        left: 16px;
+        transform: rotate(45deg);
+    }
+}
+
+@mixin btn-arrow {
+    @include arrow-icon;
+
+    user-select: none;
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-primary-gradient);
+    position: absolute;
+    border: 0;
+    border-radius: 50px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:after,
+    &:before {
+        background-color: var(--color-layer-alt-1);
+    }
+
+    &:hover {
+        background: var(--color-primary-3);
+    }
+
+    &:active {
+        background: var(--color-primary-4);
+    }
+}
+
+@mixin btn-arrow-opposite {
+    @include btn-arrow;
+
+    &:after {
+        bottom: 20px;
+        left: 19px;
+    }
+
+    &:before {
+        top: 20px;
+        left: 19px;
+    }
+}
+
+@mixin btn-arrow-left {
+    @include btn-arrow-opposite;
+
+    &:after {
+        transform: rotate(45deg);
+        left: 17px;
+    }
+
+    &:before {
+        transform: rotate(-45deg);
+        left: 17px;
+    }
+}
+
+@mixin btn-arrow-right {
+    @include btn-arrow-opposite;
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+}

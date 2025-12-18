@@ -1,0 +1,77 @@
+export const SLUG_CATEGORY_NEW = "new";
+export const SLUG_CATEGORY_BONUS_WAGERING = "bonus-wagering";
+export const SLUG_CATEGORY_MEGAWAYS = "megaways";
+export const SLUG_CATEGORY_BONUS_BUY = "bonus-buy";
+export const SLUG_CATEGORY_BLACKJACK = "blackjack";
+export const SLUG_CATEGORY_ROULETTE = "roulette";
+export const SLUG_CATEGORY_BACCARAT = "baccarat";
+export const SLUG_CATEGORY_POKER = "poker";
+export const SLUG_CATEGORY_TABLE = "table";
+export const SLUG_CATEGORY_BTC_GAMES = "btc-games"; // cryptoGames
+export const SLUG_CATEGORY_GAME_SHOWS = "game-shows";
+export const SLUG_CATEGORY_MYSTIC_JACKPOTS = "mystic-jackpots";
+export const SLUG_CATEGORY_BNG_TOURNAMENT = "bng-tournament";
+export const SLUG_CATEGORY_JACKPOT = "jackpot";
+export const SLUG_CATEGORY_PLS_TOURNAMENT = "pls-tournament";
+export const SLUG_CATEGORY_TOP = "top";
+export const SLUG_CATEGORY_RECOMMENDED = "recommended";
+export const SLUG_CATEGORY_EGYPT_GAMES = "egypt-games";
+export const SLUG_CATEGORY_FRUITS_GAMES = "fruit-games";
+export const SLUG_CATEGORY_BOOKS_GAMES = "book-games";
+export const SLUG_CATEGORY_CRASH_GAMES = "crash-games";
+export const SLUG_CATEGORY_LOTTERY_GAMES = "lottery-games";
+export const SLUG_CATEGORY_FISHING_GAMES = "fishing-games";
+
+export const SLUG_CATEGORY_HIGH_VOLATILITY = "high-volatility";
+export const SLUG_CATEGORY_LOW_VOLATILITY = "low-volatility";
+export const SLUG_CATEGORY_SPECIAL = "special";
+export const SLUG_CATEGORY_TOUR_GAMES = "tour_games";
+export const SLUG_CATEGORY_ALL = "all";
+export const SLUG_CATEGORY_LIVE = "live";
+export const SLUG_CATEGORY_POKIES = "pokies";
+
+export const SLUG_CATEGORY_WINN_WEEK = "winning-week";
+export const SLUG_CATEGORY_WIN_WEEK_TOUR = "winning-week-tournament";
+
+export const POKIES_PAGE_CATEGORIES = [
+    SLUG_CATEGORY_TOP,
+    SLUG_CATEGORY_NEW,
+    SLUG_CATEGORY_RECOMMENDED,
+    SLUG_CATEGORY_MYSTIC_JACKPOTS,
+    SLUG_CATEGORY_BONUS_WAGERING,
+    SLUG_CATEGORY_BONUS_BUY,
+    SLUG_CATEGORY_MEGAWAYS,
+    SLUG_CATEGORY_PLS_TOURNAMENT,
+    SLUG_CATEGORY_HIGH_VOLATILITY,
+    SLUG_CATEGORY_LOW_VOLATILITY,
+    SLUG_CATEGORY_BTC_GAMES,
+    SLUG_CATEGORY_SPECIAL,
+    SLUG_CATEGORY_BNG_TOURNAMENT,
+    SLUG_CATEGORY_EGYPT_GAMES,
+    SLUG_CATEGORY_FRUITS_GAMES,
+    SLUG_CATEGORY_BOOKS_GAMES,
+    SLUG_CATEGORY_CRASH_GAMES,
+    SLUG_CATEGORY_LOTTERY_GAMES,
+    SLUG_CATEGORY_FISHING_GAMES,
+];
+
+export const LIVE_PAGE_CATEGORIES = [
+    SLUG_CATEGORY_BLACKJACK,
+    SLUG_CATEGORY_ROULETTE,
+    SLUG_CATEGORY_GAME_SHOWS,
+    SLUG_CATEGORY_BACCARAT,
+    SLUG_CATEGORY_POKER,
+];
+
+export const CATEGORY_PAGE_CATEGORIES = [
+    SLUG_CATEGORY_TOP,
+    SLUG_CATEGORY_NEW,
+    SLUG_CATEGORY_RECOMMENDED,
+    SLUG_CATEGORY_BONUS_WAGERING,
+    SLUG_CATEGORY_JACKPOT,
+    SLUG_CATEGORY_BTC_GAMES,
+    SLUG_CATEGORY_TABLE,
+    SLUG_CATEGORY_ALL,
+];
+
+export const PRODUCER_PAGE_CATEGORIES = POKIES_PAGE_CATEGORIES;
