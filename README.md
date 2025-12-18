@@ -40,7 +40,7 @@ Stories получает данные игрока через URL-парамет
 
 ### Пример URL:
 ```
-https://domain.com/your_story_ny_2025/?language=en&currency=USD&name=Denys&vip_level=5&regular_level=3&top_winnings=250&favorite_game_name=ElvisFrog&favorite_game_thumbnail=https://example.com/game.png&cashback=400&bonus=200&sport_winings=300&promocode=VIP2025&end_link=https://example.com
+https://domain.com/your_story_ny_2026/?language=en&currency=USD&name=Denys&player_level=5&top_winnings=250&favorite_game_name=ElvisFrog&favorite_game_thumbnail=https://example.com/game.png&cashback=400&bonus=200&sport_winings=300&promocode=VIPROCKET2026&end_link=https://example.com
 ```
 
 ### Таблица параметров:
@@ -50,8 +50,7 @@ https://domain.com/your_story_ny_2025/?language=en&currency=USD&name=Denys&vip_l
 | `language` | Язык интерфейса | `en`, `de`, `it`, `fr` | Язык браузера | — |
 | `currency` | Валюта | Любая | `USD` | — |
 | `name` | Имя/ник игрока | Строка | Пусто (без имени) | — |
-| `vip_level` | VIP-уровень | `1`-`6` | Пусто | Если пусто — сегмент пропускается |
-| `regular_level` | Уровень игрока | `1`-`12` | Пусто | Если пусто — сегмент пропускается |
+| `player_level` | Уровень игрока | `1`-`14` | Пусто | Если пусто — сегмент пропускается |
 | `top_winnings` | Топ выигрыш за год | Число | `0` | Если `< 50` — пропускается |
 | `favorite_game_name` | Название любимой игры | Строка | Пусто | Если пусто — пропускается |
 | `favorite_game_thumbnail` | URL картинки игры | URL | Пусто | — |
@@ -73,7 +72,7 @@ Stories состоит из последовательных сегментов,
 | 1 | `stories-segment-1` | "Dear cosmic explorer" + имя | Всегда |
 | 2 | `stories-segment-2` | "Your journey is about to reach 2026!" | Всегда |
 | 3 | `stories-segment-3` | "Light up your epic moments of 2025!" | Всегда |
-| 4 | `stories-segment-4` | Regular-уровень | Если `regular_level` задан (1-12) |
+| 4 | `stories-segment-4` | Уровень игрока (1-14) | Если `regular_level` задан (1-14) |
 | 5 | `stories-segment-5` | Топ выигрыш | Если `top_winnings >= 50` |
 | 6 | `stories-segment-6` | Любимая игра | Если `favorite_game_name` задан |
 | 7 | `stories-segment-7` | Кэшбек | Если `cashback >= 1` |
@@ -99,7 +98,7 @@ Stories состоит из последовательных сегментов,
 | **segment-1** | 0.0 сек | 22.0 сек | 22.0 сек | Нет | — |
 | **segment-2** | 22.0 сек | 28.5 сек | 6.5 сек | Нет | `light_up_start` |
 | **segment-3** | 28.5 сек | 34.5 сек | 6.0 сек | Нет | `intro_moments_start`, `intro_moments_end` |
-| **segment-4** | 34.5 сек | 39.8 сек | 5.3 сек | **Да** | `regular_level_start`, `regular_level_end` |
+| **segment-4** | 34.5 сек | 39.8 сек | 5.3 сек | **Да** | `player_level_start`, `player_level_end` |
 | **segment-5** | 39.8 сек | 45.1 сек | 5.3 сек | **Да** | `top_wining_start`, `top_wining_end` |
 | **segment-6** | 45.1 сек | 50.9 сек | 5.8 сек | **Да** | `faw_game_start`, `faw_game_end` |
 | **segment-7** | 50.9 сек | 56.7 сек | 5.8 сек | **Да** | `cashback_start`, `cashback_end` |
@@ -172,7 +171,7 @@ intro_moments_end.value = tl.duration(); // = 34.5 сек
 // Текст: "Now, let us light up your most epic moments of 2025!"
 ```
 
-#### Segment 4 — Regular Level (34.5 - 39.8 сек) ⚡ ПРОПУСКАЕМЫЙ
+#### Segment 4 — Player Level (34.5 - 39.8 сек) ⚡ ПРОПУСКАЕМЫЙ
 ```javascript
 regular_level_start.value = tl.duration(); // = 34.5 сек
 // Появление: duration 1 сек (без delay!)
@@ -353,7 +352,7 @@ watch(isPlaying, (newIsPlaying) => {
 
 ```javascript
 intro_moments_start, intro_moments_end // Сегмент intro moments (часть вступления)
-regular_level_start, regular_level_end // Сегмент Regular-уровня
+player_level_start, player_level_end   // Сегмент уровня игрока
 top_wining_start, top_wining_end       // Сегмент топ выигрыша
 faw_game_start, faw_game_end           // Сегмент любимой игры
 cashback_start, cashback_end           // Сегмент кэшбека
@@ -386,8 +385,7 @@ const skips = () => {
 ### Флаги пропуска и условия их установки:
 
 ```javascript
-scip_vip_level = true         // Если vip_level не задан
-scip_regular_level = true     // Если regular_level не задан
+scip_player_level = true      // Если player_level не задан (1-14)
 scip_top_wining = true        // Если top_winnings < 50
 scip_thumbnail = true         // Если favorite_game_name пуст
 scip_cashback = true          // Если cashback < 1
@@ -541,22 +539,26 @@ vip_level_start.value = tl.duration();
 
 ---
 
-## VIP и Regular уровни
-
-### VIP-уровни (1-6)
+## Уровни игрока 2026 (1-14)
 
 | Уровень | Название | Иконка |
 |---------|----------|--------|
-| 1 | Regular | `regular_512.webp` |
-| 2 | Bronze | `bronze_512.webp` |
-| 3 | Silver | `silver_512.webp` |
-| 4 | Gold | `gold_512.webp` |
-| 5 | Platinum | `platinum_512.webp` |
-| 6 | Diamond | `diamond_512.webp` |
+| 1 | Quark | `levels_2026/Quark.webp` |
+| 2 | Rock | `levels_2026/Rock.webp` |
+| 3 | Quartz | `levels_2026/Quartz.webp` |
+| 4 | Lava | `levels_2026/Lava.webp` |
+| 5 | Crystal | `levels_2026/Crystal.webp` |
+| 6 | Carbon | `levels_2026/Carbon.webp` |
+| 7 | Meteorite | `levels_2026/Meteorite.webp` |
+| 8 | Alloy | `levels_2026/Alloy.webp` |
+| 9 | Iron | `levels_2026/Iron.webp` |
+| 10 | Bronze | `levels_2026/Bronze.webp` |
+| 11 | Silver | `levels_2026/Silver.webp` |
+| 12 | Gold | `levels_2026/Gold.webp` |
+| 13 | Platinum | `levels_2026/Platinum.webp` |
+| 14 | Diamond | `levels_2026/Diamond.webp` |
 
-### Regular-уровни (1-12)
-
-Иконки: `1.webp` ... `12.webp` в папке `img/statuses/level/`
+Иконки находятся в папке `img/statuses/levels_2026/`
 
 ---
 

@@ -39,9 +39,9 @@
         <div class="h5 max_with_bigger" v-html="this.texts.light_up_moments"></div>
         <div class="h2">2025!</div>
       </div>
-      <div id="stories-segment-4" v-show="!scip_regular_level" class="stories-segment" :style="animationPauseStyle">
+      <div id="stories-segment-4" v-show="!scip_player_level" class="stories-segment" :style="animationPauseStyle">
         <img id="player_status"
-            :src="regular_level_src" class="player_status"
+            :src="player_level_src" class="player_status"
             style="margin-top: 10vh"
             alt="level"
         />
@@ -49,17 +49,11 @@
           {{ this.texts.you_reached }}
         </div>
         <div class="h3">
-          {{ this.texts.level_player + " " + this.regular_level }}
+          {{ this.texts['player_level_' + this.player_level] }} {{ this.texts.level }}
         </div>
-        <div>
-          <div v-if="this.regular_level == '1' || this.regular_level == '2' || this.regular_level == '3'
-          || this.regular_level == '4' || this.regular_level == '5' || this.regular_level == '6'
-          || this.regular_level == '7' || this.regular_level == '8' || this.regular_level == '9'
-          || this.regular_level == '10' || this.regular_level == '11' || this.regular_level == '12'" class="h5">
-            {{ this.texts.in_regular }}
-          </div>
+        <div class="h5">
+          {{ this.texts.in_regular }}
         </div>
-        
       </div>
       <div id="stories-segment-5" v-show="!scip_top_wining" class="stories-segment" :style="animationPauseStyle">
         <img :src="top_wining_icon" class="top_wining_icon" alt="">

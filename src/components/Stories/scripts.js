@@ -17,24 +17,21 @@ import video_en from '@components/Stories/img/video/en.mp4';
 import video_it from '@components/Stories/img/video/it.mp4';
 import video_de from '@components/Stories/img/video/de.mp4';
 import video_fr from '@components/Stories/img/video/fr.mp4';
-import regular from '@components/Stories/img/statuses/regular_512.webp';
-import bronze from '@components/Stories/img/statuses/bronze_512.webp';
-import silver from '@components/Stories/img/statuses/silver_512.webp';
-import gold from '@components/Stories/img/statuses/gold_512.webp';
-import platinum from '@components/Stories/img/statuses/platinum_512.webp';
-import diamond from '@components/Stories/img/statuses/diamond_512.webp';
-import level1 from '@components/Stories/img/statuses/level/1.webp';
-import level2 from '@components/Stories/img/statuses/level/2.webp';
-import level3 from '@components/Stories/img/statuses/level/3.webp';
-import level4 from '@components/Stories/img/statuses/level/4.webp';
-import level5 from '@components/Stories/img/statuses/level/5.webp';
-import level6 from '@components/Stories/img/statuses/level/6.webp';
-import level7 from '@components/Stories/img/statuses/level/7.webp';
-import level8 from '@components/Stories/img/statuses/level/8.webp';
-import level9 from '@components/Stories/img/statuses/level/9.webp';
-import level10 from '@components/Stories/img/statuses/level/10.webp';
-import level11 from '@components/Stories/img/statuses/level/11.webp';
-import level12 from '@components/Stories/img/statuses/level/12.webp';
+// Player levels 2026 (1-14)
+import levelQuark from '@components/Stories/img/statuses/levels_2026/Quark.webp';
+import levelRock from '@components/Stories/img/statuses/levels_2026/Rock.webp';
+import levelQuartz from '@components/Stories/img/statuses/levels_2026/Quartz.webp';
+import levelLava from '@components/Stories/img/statuses/levels_2026/Lava.webp';
+import levelCrystal from '@components/Stories/img/statuses/levels_2026/Crystal.webp';
+import levelCarbon from '@components/Stories/img/statuses/levels_2026/Carbon.webp';
+import levelMeteorite from '@components/Stories/img/statuses/levels_2026/Meteorite.webp';
+import levelAlloy from '@components/Stories/img/statuses/levels_2026/Alloy.webp';
+import levelIron from '@components/Stories/img/statuses/levels_2026/Iron.webp';
+import levelBronze from '@components/Stories/img/statuses/levels_2026/Bronze.webp';
+import levelSilver from '@components/Stories/img/statuses/levels_2026/Silver.webp';
+import levelGold from '@components/Stories/img/statuses/levels_2026/Gold.webp';
+import levelPlatinum from '@components/Stories/img/statuses/levels_2026/Platinum.webp';
+import levelDiamond from '@components/Stories/img/statuses/levels_2026/Diamond.webp';
 import casback_icon from '@components/Stories/img/casback_icon.webp';
 import change_win from '@components/Stories/img/change_win.webp';
 import copy_src from '@components/Stories/img/icons/copy.svg';
@@ -63,8 +60,7 @@ export default {
     const promocode = ref('ROCKET2026');
     const name = ref('');
     const days = ref(false);
-    const regular_level = ref('');
-    const level = ref('');
+    const player_level = ref('');
     const top_winnings = ref(0);
     const freespins = ref(0);
     const cashback = ref(0);
@@ -73,14 +69,13 @@ export default {
     const favorite_game_name = ref('');
     const fire_type = ref(1);
     const end_link = ref('');
-    const vip_level_src = ref('');
-    const regular_level_src = ref('');
+    const player_level_src = ref('');
     const sport_winings = ref('');
     const light_up_start = ref(9999);
     const intro_moments_start = ref(9999);
     const intro_moments_end = ref(9999);
-    const regular_level_start = ref(9999);
-    const regular_level_end = ref(9999);
+    const player_level_start = ref(9999);
+    const player_level_end = ref(9999);
     const faw_game_start = ref(9999);
     const faw_game_end = ref(9999);
     const top_wining_start = ref(9999);
@@ -91,8 +86,7 @@ export default {
     const bonus_end = ref(9999);
     const sport_winings_start = ref(9999);
     const sport_winings_end = ref(9999);
-    const scip_vip_level = ref(true);
-    const scip_regular_level = ref(true);
+    const scip_player_level = ref(true);
     const scip_thumbnail = ref(true);
     const scip_top_wining = ref(true);
     const scip_cashback = ref(true);
@@ -169,9 +163,9 @@ export default {
 
     const skips = () => {
       // segment-3 теперь не пропускаемый (light_up_moments)
-      if (scip_regular_level.value === true && currentTime.value > regular_level_start.value && currentTime.value < regular_level_end.value) {
-        videoPlayer.value.currentTime = regular_level_end.value;
-        tl.time(regular_level_end.value);
+      if (scip_player_level.value === true && currentTime.value > player_level_start.value && currentTime.value < player_level_end.value) {
+        videoPlayer.value.currentTime = player_level_end.value;
+        tl.time(player_level_end.value);
       }
       if (scip_thumbnail.value === true && currentTime.value > faw_game_start.value && currentTime.value < faw_game_end.value) {
         videoPlayer.value.currentTime = faw_game_end.value;
@@ -232,12 +226,11 @@ export default {
           newTime = faw_game_start.value;
         }
         if (scip_thumbnail.value === true && newTime >= faw_game_start.value && newTime < faw_game_end.value) {
-          newTime = regular_level_start.value;
+          newTime = player_level_start.value;
         }
-        if (scip_regular_level.value === true && newTime >= regular_level_start.value && newTime < regular_level_end.value) {
+        if (scip_player_level.value === true && newTime >= player_level_start.value && newTime < player_level_end.value) {
           newTime = intro_moments_start.value;
         }
-        // segment-3 (vip_level) теперь не пропускаемый
         if (newTime < 0) {
           newTime = 0;
         }
@@ -431,8 +424,7 @@ export default {
         currency.value = params.currency;
         name.value = params.name;
         days.value = params.days;
-        regular_level.value = params.regular_level;
-        level.value = params.vip_level;
+        player_level.value = params.player_level;
         gifts.value = Math.round(+(params.bonus || '').replace(',', '.'));
         if (params.promocode) {
           promocode.value = params.promocode;
@@ -459,86 +451,30 @@ export default {
 
         end_link.value = params.end_link;
 
-        if (params.vip_level === '1') {
-          vip_level_src.value = regular
-          scip_vip_level.value = false;
-          fire_type.value = 1;
-        } else if (params.vip_level === '2') {
-          vip_level_src.value = bronze;
-          scip_vip_level.value = false;
-          fire_type.value = 1;
-        } else if (params.vip_level === '3') {
-          vip_level_src.value = silver;
-          scip_vip_level.value = false;
-          fire_type.value = 2;
-        } else if (params.vip_level === '4') {
-          vip_level_src.value = gold;
-          scip_vip_level.value = false;
-          fire_type.value = 2;
-        } else if (params.vip_level === '5') {
-          vip_level_src.value = platinum;
-          scip_vip_level.value = false;
-          fire_type.value = 3;
-        } else if (params.vip_level === '6') {
-          vip_level_src.value = diamond;
-          scip_vip_level.value = false;
-          fire_type.value = 3;
+        // Player levels 2026: Quark, Rock, Quartz, Lava, Crystal, Carbon, Meteorite, Alloy, Iron, Bronze, Silver, Gold, Platinum, Diamond
+        const levelNum = params.player_level;
+        const levelIcons = {
+          '1': levelQuark,
+          '2': levelRock,
+          '3': levelQuartz,
+          '4': levelLava,
+          '5': levelCrystal,
+          '6': levelCarbon,
+          '7': levelMeteorite,
+          '8': levelAlloy,
+          '9': levelIron,
+          '10': levelBronze,
+          '11': levelSilver,
+          '12': levelGold,
+          '13': levelPlatinum,
+          '14': levelDiamond
+        };
+        
+        if (levelNum && levelIcons[levelNum]) {
+          player_level_src.value = levelIcons[levelNum];
+          scip_player_level.value = false;
         } else {
-          scip_vip_level.value = true;
-        }
-        if (params.regular_level === '1') {
-          regular_level_src.value = level1;
-          scip_regular_level.value = false;
-          fire_type.value = 1;
-        } else if (params.regular_level === '2') {
-          regular_level_src.value = level2;
-          scip_regular_level.value = false;
-          fire_type.value = 1;
-        } else if (params.regular_level === '3') {
-          regular_level_src.value = level3;
-          scip_regular_level.value = false;
-          fire_type.value = 1;
-        } else if (params.regular_level === '4') {
-          regular_level_src.value = level4;
-          scip_regular_level.value = false;
-          fire_type.value = 1;
-        } else if (params.regular_level === '5') {
-          regular_level_src.value = level5;
-          scip_regular_level.value = false;
-          fire_type.value = 2;
-        } else if (params.regular_level === '6') {
-          regular_level_src.value = level6;
-          scip_regular_level.value = false;
-          fire_type.value = 2;
-        } else if (params.regular_level === '7') {
-          regular_level_src.value = level7;
-          scip_regular_level.value = false;
-          fire_type.value = 2;
-        } else if (params.regular_level === '8') {
-          regular_level_src.value = level8;
-          scip_regular_level.value = false;
-          fire_type.value = 2;
-        } else if (params.regular_level === '9') {
-          regular_level_src.value = level9;
-          scip_regular_level.value = false;
-          fire_type.value = 3;
-        } else if (params.regular_level === '10') {
-          regular_level_src.value = level10;
-          scip_regular_level.value = false;
-          fire_type.value = 3;
-        } else if (params.regular_level === '11') {
-          regular_level_src.value = level11;
-          scip_regular_level.value = false;
-          fire_type.value = 3;
-        } else if (params.regular_level === '12') {
-          regular_level_src.value = level12;
-          scip_regular_level.value = false;
-          fire_type.value = 3;
-        } else {
-          scip_regular_level.value = true;
-        }
-        if (params.fire_type !== '' && params.fire_type !== null && params.fire_type !== undefined) {
-          fire_type.value = 1;
+          scip_player_level.value = true;
         }
       } else {
 
@@ -597,12 +533,12 @@ export default {
       intro_moments_end.value = tl.duration();
 
       // regular level
-      regular_level_start.value = tl.duration();
+      player_level_start.value = tl.duration();
       tl.from("#stories-segment-4", 
             {duration: 1, marginTop: "-18vh", scale:0.5, opacity:0, ease: "power1.Out"});
       tl.to("#stories-segment-4", 
             {delay: 3.3, duration: 1, marginTop: "-18vh", scale:0.5, opacity:0, ease: "power1.Out"});
-      regular_level_end.value = tl.duration();
+      player_level_end.value = tl.duration();
       // top winnings
       top_wining_start.value = tl.duration();
       tl.from("#stories-segment-5", 
@@ -703,22 +639,19 @@ export default {
       currency,
       name,
       days,
-      regular_level,
-      level,
+      player_level,
       top_winnings,
       cashback,
       favorite_game_thumbnail,
       favorite_game_name,
       fire_type,
       end_link,
-      vip_level_src,
-      regular_level_src,
+      player_level_src,
       video_en,
       video_it,
       video_de,
       video_fr,
-      scip_vip_level,
-      scip_regular_level,
+      scip_player_level,
       scip_top_wining,
       scip_cashback,
       scip_bonus,
