@@ -289,13 +289,13 @@ tl.set("#story_controls", {className: "story_controls height_70"});
 ```javascript
 const skips = () => {
   // Проверка для каждого пропускаемого сегмента
-  if (scip_vip_level.value === true 
-      && currentTime.value > vip_level_start.value   // > 28.5 сек
-      && currentTime.value < vip_level_end.value) {  // < 34.5 сек
+  if (scip_player_level.value === true 
+      && currentTime.value > player_level_start.value   // > 34.5 сек
+      && currentTime.value < player_level_end.value) {  // < 39.8 сек
     
     // Перематываем оба на конец сегмента
-    videoPlayer.value.currentTime = vip_level_end.value; // = 34.5 сек
-    tl.time(vip_level_end.value);                        // = 34.5 сек
+    videoPlayer.value.currentTime = player_level_end.value; // = 39.8 сек
+    tl.time(player_level_end.value);                        // = 39.8 сек
   }
   // ... аналогично для остальных
 }
@@ -309,7 +309,7 @@ const skips = () => {
 | **Минимум** (только обязательные) | 6 | ~58.8 сек |
 
 **Пропускаемые сегменты** (общая длительность ~34.2 сек):
-- Regular Level: 5.3 сек
+- Player Level: 5.3 сек
 - Top Winnings: 5.3 сек
 - Favorite Game: 5.8 сек
 - Cashback: 5.8 сек
@@ -568,6 +568,44 @@ vip_level_start.value = tl.duration();
 |----------|-------------------|
 | `VIPROCKET2026` | "125% bonus is waiting for you!" |
 | `ROCKET2026` (default) | "50% + 50 FS bonus is waiting for you!" |
+
+### Где менять тексты промокодов
+
+**1. Дефолтный промокод** — `scripts.js`, строка ~63:
+```javascript
+const promocode = ref('ROCKET2026');
+```
+
+**2. Условия отображения текста бонуса** — `your_story.vue`, segment-16:
+```vue
+<div class="waiting_text" v-if="this.promocode === 'VIPROCKET2026' " >
+  {{ this.texts.end_text_gift }}
+</div>
+<div class="waiting_text" v-if="this.promocode === 'ROCKET2026'">
+  {{ this.texts.end_text_gift1 }}
+</div>
+```
+
+**3. Тексты описания бонусов** — файлы локализации (`localization/*.json`):
+
+| Ключ | Описание | Пример (EN) |
+|------|----------|-------------|
+| `end_text_gift` | Текст для VIP промокода | "125% bonus is waiting for you!" |
+| `end_text_gift1` | Текст для обычного промокода | "50% + 50 FS bonus is waiting for you!" |
+| `end_text_gift_explain` | Начало пояснения | "Type " |
+| `end_text_gift_explain1` | Конец пояснения | " in promo code field while depositing" |
+
+**Пример изменения в `localization/en.json`:**
+```json
+{
+  "end_text_gift": "125% bonus is waiting for you!",
+  "end_text_gift1": "50% + 50 FS bonus is waiting for you!",
+  "end_text_gift_explain": "Type ",
+  "end_text_gift_explain1": " in promo code field while depositing"
+}
+```
+
+> ⚠️ **Важно**: При добавлении нового промокода нужно добавить условие `v-if` в `your_story.vue` и соответствующий ключ локализации во все языковые файлы.
 
 ---
 
